@@ -1,166 +1,122 @@
-<?php require_once 'inc/header.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
 
-    <!-- Page Content -->
-    <div class="page-heading contact-heading header-text">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="text-content">
-              <h4>contact us</h4>
-              <h2>let's get in touch</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <style>
+        body{
+            background:#f4f6f9;
+            font-family:Arial, sans-serif;
+        }
 
-    <div class="find-us">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <h2>Our Location on Maps</h2>
-            </div>
-          </div>
-          <div class="col-md-8">
-<!-- How to change your own map point
-	1. Go to Google Maps
-	2. Click on your location point
-	3. Click "Share" and choose "Embed map" tab
-	4. Copy only URL and paste it within the src="" field below
--->
-            <div id="map">
-              <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="330px" frameborder="0" style="border:0" allowfullscreen></iframe>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="left-content">
-              <h4>About our office</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti.</p>
-              <ul class="social-icons">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                <li><a href="#"><i class="fa fa-behance"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+        .contact-section{
+            padding:70px 0;
+        }
 
-    
-    <div class="send-message">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <h2>Send us a Message</h2>
-            </div>
-          </div>
-          <div class="col-md-8">
-            <div class="contact-form">
-              <form id="contact" action="" method="post">
-                <div class="row">
-                  <div class="col-lg-12 col-md-12 col-sm-12">
-                    <fieldset>
-                      <input name="name" type="text" class="form-control" id="name" placeholder="Full Name" required="">
-                    </fieldset>
-                  </div>
-                  <div class="col-lg-12 col-md-12 col-sm-12">
-                    <fieldset>
-                      <input name="email" type="text" class="form-control" id="email" placeholder="E-Mail Address" required="">
-                    </fieldset>
-                  </div>
-                  <div class="col-lg-12 col-md-12 col-sm-12">
-                    <fieldset>
-                      <input name="subject" type="text" class="form-control" id="subject" placeholder="Subject" required="">
-                    </fieldset>
-                  </div>
-                  <div class="col-lg-12">
-                    <fieldset>
-                      <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your Message" required=""></textarea>
-                    </fieldset>
-                  </div>
-                  <div class="col-lg-12">
-                    <fieldset>
-                      <button type="submit" id="form-submit" class="filled-button">Send Message</button>
-                    </fieldset>
-                  </div>
+        .contact-card{
+            background:#fff;
+            border-radius:15px;
+            box-shadow:0 5px 20px rgba(0,0,0,.15);
+            padding:40px;
+            transition:.3s;
+        }
+
+        .contact-card:hover{
+            transform:translateY(-5px);
+        }
+
+        .title{
+            color:#0d6efd;
+            font-weight:bold;
+        }
+
+        .contact-info{
+            font-size:18px;
+            margin:20px 0;
+        }
+
+        .contact-info i{
+            color:#0d6efd;
+            margin-right:10px;
+            font-size:22px;
+        }
+
+        .social a{
+            text-decoration:none;
+            margin:10px;
+            font-size:18px;
+            color:#0d6efd;
+            font-weight:bold;
+        }
+
+        .social a:hover{
+            color:#084298;
+        }
+    </style>
+
+</head>
+<body>
+
+<?php include("navbar.php"); ?>
+
+<section class="contact-section">
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8">
+
+                <div class="contact-card text-center">
+
+                    <h2 class="title">Contact Us</h2>
+
+                    <p class="text-muted mt-3">
+                        If you have any questions, feel free to contact us through the following information.
+                    </p>
+
+                    <hr>
+
+                    <div class="contact-info">
+                        📍 <strong>Address:</strong> 10th of Ramadan City, Egypt
+                    </div>
+
+                    <div class="contact-info">
+                        📞 <strong>Phone:</strong> +20 100 123 4567
+                    </div>
+
+                    <div class="contact-info">
+                        ✉️ <strong>Email:</strong> info@example.com
+                    </div>
+
+                    <div class="contact-info">
+                        🕒 <strong>Working Hours:</strong><br>
+                        Sunday - Thursday<br>
+                        9:00 AM - 5:00 PM
+                    </div>
+
+                    <hr>
+
+                    <div class="social">
+                        <a href="#">Facebook</a> |
+                        <a href="#">Instagram</a> |
+                        <a href="#">LinkedIn</a> |
+                        <a href="#">Twitter</a>
+                    </div>
+
                 </div>
-              </form>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <ul class="accordion">
-              <li>
-                  <a>Accordion Title One</a>
-                  <div class="content">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti elite.</p>
-                  </div>
-              </li>
-              <li>
-                  <a>Second Title Here</a>
-                  <div class="content">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti elite.</p>
-                  </div>
-              </li>
-              <li>
-                  <a>Accordion Title Three</a>
-                  <div class="content">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti elite.</p>
-                  </div>
-              </li>
-              <li>
-                  <a>Fourth Accordion Title</a>
-                  <div class="content">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti elite.</p>
-                  </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="happy-clients">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <h2>Our Happy Customers</h2>
             </div>
-          </div>
-          <div class="col-md-12">
-            <div class="owl-clients owl-carousel">
-              <div class="client-item">
-                <img src="assets/images/client-01.png" alt="1">
-              </div>
-              
-              <div class="client-item">
-                <img src="assets/images/client-01.png" alt="2">
-              </div>
-              
-              <div class="client-item">
-                <img src="assets/images/client-01.png" alt="3">
-              </div>
-              
-              <div class="client-item">
-                <img src="assets/images/client-01.png" alt="4">
-              </div>
-              
-              <div class="client-item">
-                <img src="assets/images/client-01.png" alt="5">
-              </div>
-              
-              <div class="client-item">
-                <img src="assets/images/client-01.png" alt="6">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <?php require_once 'inc/footer.php' ?>
+        </div>
+    </div>
+</section>
+
+<?php include("footer.php"); ?>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
