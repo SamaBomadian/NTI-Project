@@ -88,7 +88,7 @@
                     </div>
 
                     <div class="contact-info">
-                        ✉️ <strong>Email:</strong> info@example.com
+                        ✉️ <strong>Email:</strong> fake@gmail.com
                     </div>
 
                     <div class="contact-info">
