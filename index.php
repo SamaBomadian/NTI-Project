@@ -2,8 +2,21 @@
 
 <?php include "includes/navbar.php"; ?>
 
-<div class="container mt-5">
+<main>
+    <div class="container mt-5">
+    <h1>Home Page</h1>
+    <h1>Home Page</h1>
+    <h1>Home Page</h1>
+    <h1>Home Page</h1>
+    <h1>Home Page</h1>
+    <h1>Home Page</h1>
+    <h1>Home Page</h1>
+    <h1>Home Page</h1>
+    <h1>Home Page</h1>
+    <h1>Home Page</h1>
+    <h1>Home Page</h1>
     <h1>Home Page</h1>
 </div>
+</main>
 
 <?php include "includes/footer.php"; ?>
