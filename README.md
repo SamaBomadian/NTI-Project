@@ -5,9 +5,8 @@ A responsive and modern Web Application for renting cars, built with **PHP, HTML
 ---
 
 ## 📸 Screenshots
+<img width="1897" height="871" alt="image" src="https://github.com/user-attachments/assets/e8a751ea-ad98-4161-83c0-be03c9a54364" />
 
-![RentCars Home Page](assets/images/home-preview.png)
-*(Replace with an actual screenshot or image path of your project)*
 
 ---
 
