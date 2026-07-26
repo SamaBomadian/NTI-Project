@@ -1,9 +1,7 @@
 <?php include "includes/header.php"; ?>
-
 <?php include "includes/navbar.php"; ?>
-
-<div class="container mt-5">
-    <h1>Home Page</h1>
-</div>
-
+<?php include "home.php"; ?>
+<?php include "about.php"; ?>
+<?php include "car-details.php"; ?>
+<?php include "contact.php"; ?>
 <?php include "includes/footer.php"; ?>
