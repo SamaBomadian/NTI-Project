@@ -1,6 +1,6 @@
 # 🚗 RentCars - Car Rental Website
 
-A responsive and modern Web Application for renting cars, built with **PHP, HTML5, CSS3, JavaScript (jQuery), and Bootstrap 5**. The project features a full user interface including home, about, car listings, contact page, and a custom glassmorphism login system.
+A responsive and modern Web Application for renting cars, built with **PHP, HTML5, CSS3, and Bootstrap 5**. The project features a full user interface including home, about, car listings, contact page, and a custom glassmorphism login system.
 
 ---
 
