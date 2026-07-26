@@ -1,5 +1,5 @@
 
-<div class="container sticky-top pt-3">
+<div class="container لهgi pt-3">
   <nav class="navbar navbar-expand-lg px-4 bg-body-tertiary rounded-4 text-light">
     <div class="container-fluid">
 
