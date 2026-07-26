@@ -1,5 +1,5 @@
 
-<div class="container لهgi pt-3">
+<div class="container sticky-top pt-3">
   <nav class="navbar navbar-expand-lg px-4 bg-body-tertiary rounded-4 text-light">
     <div class="container-fluid">
 
@@ -8,7 +8,7 @@
             <span  class="logo" style= "color:#1572D3;">RENTCARS</span>
         </a>
         
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-togglegit add ="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         
