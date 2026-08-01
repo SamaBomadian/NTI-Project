@@ -50,6 +50,6 @@
                                  </div>
 </footer>
 
-<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="/nti-project(2)/assets/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

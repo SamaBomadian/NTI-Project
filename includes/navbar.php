@@ -1,10 +1,14 @@
+<?php 
+  session_start();
+?>
+
 
 <div class="container sticky-top pt-3">
   <nav class="navbar navbar-expand-lg px-4 bg-body-tertiary rounded-4 text-light">
     <div class="container-fluid">
 
-        <a class="navbar-brand fw-medium fs-4 d-flex align-items-center me-5" href="#home">
-            <img src="assets/images/Group.png " style="width:30px;height:30px;"/>
+        <a class="navbar-brand fw-medium fs-4 d-flex align-items-center me-5" href="#home.">
+            <img src="/nti-project(2)/assets/images/Group.png " style="width:30px;height:30px;"/>
             <span  class="logo" style= "color:#1572D3;">RENTCARS</span>
         </a>
         
@@ -27,7 +31,22 @@
                     <a class="nav-link text-primary" href="#contact">Contact</a>
                 </li>
             </ul> 
-          <a href="login.php" target="_blank" class="btn btn-primary" style=" --bs-btn-padding-x: 2.75rem;">Sign In</a>
+          <?php 
+            if (isset($_SESSION['user_name'])){?>
+            <a href="" class="btn btn-primary" style=" --bs-btn-padding-x: 2.75rem;"><?php echo $_SESSION['user_name']; ?></a>
+          <?php }else{ ?>
+            <a href="/nti-project(2)/auth/login.php" class="btn btn-primary" style=" --bs-btn-padding-x: 2.75rem;">Log In</a>
+            <a href="/nti-project(2)/auth/register.php" class="btn btn-outline-primary" style=" --bs-btn-padding-x: 2.75rem;">Sign Up</a>
+
+           ?>
+           <?php } ?>
+          <?php 
+          if(isset($_SESSION['user_name'])){
+          ?>
+            <a class="nav-link text-primary" href="/nti-project(2)/auth/logout.php">Log Out</a>
+          <?php
+          }
+          ?>
         </div>
     </div>
   </nav>

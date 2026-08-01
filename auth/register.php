@@ -1,3 +1,29 @@
+<?php
+include_once '../config/connect.php';
+
+$obj =new connect();
+$error="";
+
+if(isset($_POST['name'])){
+
+    if($obj->checkEmail($_POST['email'])){
+       $error="This Email already exists";
+    } else {
+        $_POST['password']=password_hash($_POST['password'],PASSWORD_DEFAULT);
+        
+        $obj->insert($_POST,'users');
+        header("location:/nti-project(2)/auth/login.php");
+        }
+
+    }
+
+
+?>
+
+<?php include "../includes/header.php"; ?>
+
+
+
 <style>
 /* Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -12,7 +38,7 @@
 
 .logg {
     position: relative;
-    background-image: url("assets/images/log.png");
+    background-image: url("/nti-project(2)/assets/images/log.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -132,12 +158,23 @@ a:hover {
                     <i class="fa-solid fa-car-side"></i>
                     <span class="white">RENT</span><span class="blue">CARS</span>
                 </h1>
-                <h2>Welcome Back!</h2>
-                <p>Log in to your account</p>
+                <h2>Welcome To our Website!</h2>
+                <p>Sign up to create your account</p>
+
+                <?php if(!empty($error)) { ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Error!</strong><?php echo $error; ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php } ?>
             </div>
             
-            <form action="index.php" method="post">
+            <form action="" method="post">
                 <div class="mb-3">
+                    <label>User Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="User Name" required>
+                </div>
+                 <div class="mb-3">
                     <label>Email</label>
                     <input type="email" name="email" class="form-control" placeholder="Email Address" required>
                 </div>
@@ -146,15 +183,22 @@ a:hover {
                     <input type="password" name="password" class="form-control " placeholder="Password" required>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-login">Log In</button>
+                <button type="submit" class="btn btn-login">Sign Up</button>
             </form>
 
             <div class="text-center mt-3">
-                <a href="#">Forgot Password?</a>
-                <br><br>
-                <span>Don't have an account?</span>
-                <a href="#">Sign Up</a>
+                
+              
+                <span>already have an account?</span>
+                <a href="login.php">Log IN</a>
             </div>
         </div>
     </div>
 </section>
+
+
+<script src="/nti-project(2)/assets/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
