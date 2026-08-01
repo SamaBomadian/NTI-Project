@@ -7,8 +7,6 @@
 </style>
 
 
-
-
 <section class="container mt-5" id="home">
     <div class="row bg-hero align-items-center">
     <div class="col-lg-6 hero h-50">
