@@ -5,8 +5,8 @@ class Connect
     private string $host_Name = "localhost";
     private string $user_name = "root";
     private string $password = "";
-    private string $data = "phpmyadmin";
-    private int $port = 3306;
+    private string $data = "car_rental_db";
+    private int $port = 3307;
 
     public $conn;
 
