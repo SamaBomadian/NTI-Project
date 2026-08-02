@@ -1,34 +1,23 @@
 <?php
-session_start();
-include_once 'connect.php'; 
+include_once 'connect.php';
 
-$db = new connect();
+$obj = new connect();
 $error = "";
 
-if (isset($_POST['email'])) {
-
-    $user_data = $db->login($_POST['email'], $_POST['password']);
-
-    if (!empty($user_data)) {
-        $_SESSION['user_id']   = $user_data['id'];
-        $_SESSION['user_name'] = $user_data['name'];
-        $_SESSION['user_role']      = $user_data['role'];
-
-        if ($user_data['role'] == 'admin') {
-            header("Location: dashboard.php");
-        } else {
-            header("Location: index.php");
-        }
-        exit();
-
+if (isset($_POST['name'])) {
+    if ($obj->checkEmail($_POST['email'])) {
+        $error = "This Email already exists";
     } else {
-        $error = "Invalid Email or Password";
+        $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        
+        $obj->insert($_POST, 'users');
+        header("Location: login.php"); 
+        exit();
     }
 }
 ?>
 
-<?php include_once 'includes/header.php'; ?>
-
+<?php include_once "includes/header.php"; ?>
 
 <link rel="stylesheet" href="assets/css/auth.css">
 
@@ -42,8 +31,8 @@ if (isset($_POST['email'])) {
                     <i class="fa-solid fa-car-side"></i>
                     <span class="white">RENT</span><span class="blue">CARS</span>
                 </h1>
-                <h2>Welcome Back!</h2>
-                <p>Log in to your account</p>
+                <h2>Welcome To our Website!</h2>
+                <p>Sign up to create your account</p>
 
                 <?php if (!empty($error)) : ?>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -52,7 +41,12 @@ if (isset($_POST['email'])) {
                     </div>
                 <?php endif; ?>
             </div>
+            
             <form action="" method="post">
+                <div class="mb-3">
+                    <label>User Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="User Name" required>
+                </div>
                 <div class="mb-3">
                     <label>Email</label>
                     <input type="email" name="email" class="form-control" placeholder="Email Address" required>
@@ -62,14 +56,12 @@ if (isset($_POST['email'])) {
                     <input type="password" name="password" class="form-control" placeholder="Password" required>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-login">Log In</button>
+                <button type="submit" class="btn btn-login">Sign Up</button>
             </form>
 
             <div class="text-center mt-3">
-                <a href="#">Forgot Password?</a>
-                <br><br>
-                <span>Don't have an account?</span>
-                <a href="register.php">Sign Up</a>
+                <span>Already have an account?</span>
+                <a href="login.php">Log IN</a>
             </div>
         </div>
     </div>

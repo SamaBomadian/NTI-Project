@@ -1,11 +1,9 @@
 <?php
-session_start();
 require_once 'connect.php'; 
 
-// 2. استقبال كلمة البحث لو تم استخدام السيرش
+
 $search = $_GET['search'] ?? '';
 $db = new Connect();
-// 3. جلب السيارات
 if (!empty($search)) {
     $cars = $db->searchCars($search);
 } else {
@@ -14,7 +12,7 @@ if (!empty($search)) {
 
 
 include 'includes/header.php';
-include 'includes/navbar.php';
+
 ?>
 
 <!-- Section: Popular Rental Deals -->
@@ -29,7 +27,7 @@ include 'includes/navbar.php';
             <h2 class="fw-bold text-dark display-6">Most popular cars rental deals</h2>
         </div>
 
-        <!-- 🔍 Search Form (شريط البحث) -->
+        
         <form action="cars.php" method="GET" class="row g-2 mb-5 justify-content-center">
             <div class="col-md-6">
                 <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" class="form-control form-control-lg rounded-pill px-4" placeholder="Search by brand or model (e.g. Jaguar, Porsche)...">
@@ -81,8 +79,8 @@ include 'includes/navbar.php';
                                     </div>
                                 </div>
 
-                                <!-- زرار يوجه لصفحة التفاصيل مع رقم العربية -->
-                                <a href="car-details.php?id=<?= $car['id'] ?>" class="btn btn-primary w-100 py-2 rounded-3 fw-semibold text-center">
+                              
+                                <a href="car_details.php?id=<?= $car['id'] ?>" class="btn btn-primary w-100 py-2 rounded-3 fw-semibold text-center">
                                     Rent Now <i class="fa-solid fa-arrow-right ms-1"></i>
                                 </a>
                             </div>
@@ -90,7 +88,7 @@ include 'includes/navbar.php';
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                <!-- في حالة البحث عن عربية مش موجودة -->
+            
                 <div class="col-12 text-center py-5">
                     <h4 class="text-muted">No cars found matching your search.</h4>
                     <a href="cars.php" class="btn btn-outline-primary mt-2">View All Cars</a>
@@ -102,6 +100,3 @@ include 'includes/navbar.php';
     </div>
 </section>
 
-<?php 
-include 'includes/footer.php'; 
-?>
