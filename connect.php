@@ -4,21 +4,26 @@ class Connect
 {
     private string $host_Name = "localhost";
     private string $user_name = "root";
-    private string $password  = "";
-    private string $data      = "car_rental_db"; 
-    private int $port         = 3307;            
+    private string $password = "";
+    private string $data = "phpmyadmin";
+    private int $port = 3306;
+
     public $conn;
 
     public function __construct()
     {
-        
-        $this->conn = mysqli_connect($this->host_Name, $this->user_name, $this->password, $this->data, $this->port);
+        $this->conn = mysqli_connect(
+            $this->host_Name,
+            $this->user_name,
+            $this->password,
+            $this->data,
+            $this->port
+        );
 
         if (!$this->conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
     }
-
     public function insert(array $post, string $table)
     {
         unset($post['id']);

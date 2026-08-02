@@ -1,126 +1,187 @@
 <?php
 session_start();
 
-// 1. حماية الصفحة للأدمن فقط
-if (!isset($_SESSION['user_id']) || (isset($_SESSION['user_role']) && $_SESSION['user_role'] !== 'admin')) {
+if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
-require_once 'connect.php'; 
+require_once "connect.php";
+
 $db = new Connect();
 
-// 2. جلب إحصائيات النظام لعرضها في الداشبورد
-$carsData = $db->select("cars") ?? [];
-$usersData = $db->select("users") ?? [];
-$bookingsData = $db->select("bookings") ?? []; // لو عندك جدول حجوزات
+// عدد المستخدمين
+$users = count($db->select("users"));
 
-$totalCars = count($carsData);
-$totalUsers = count($usersData);
-$totalBookings = count($bookingsData);
+// عدد السيارات
+$cars = 0;
+try {
+    $cars = count($db->select("cars"));
+} catch (Exception $e) {
+    $cars = 0;
+}
 
-include 'includes/header.php';
-include 'includes/navbar.php';
+// عدد الحجوزات
+$bookings = 0;
+try {
+    $bookings = count($db->select("bookings"));
+} catch (Exception $e) {
+    $bookings = 0;
+}
+
+include "includes/header.php";
+include "includes/navbar.php";
 ?>
 
-<div class="container-fluid py-4">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+
+    <style>
+        body{
+            background:#f4f6f9;
+        }
+
+        .sidebar{
+            width:250px;
+            height:100vh;
+            position:fixed;
+            background:#212529;
+        }
+
+        .sidebar h3{
+            color:white;
+            padding:20px;
+            text-align:center;
+        }
+
+        .sidebar a{
+            display:block;
+            color:white;
+            text-decoration:none;
+            padding:15px 20px;
+        }
+
+        .sidebar a:hover{
+            background:#0d6efd;
+        }
+
+        .content{
+            margin-left:250px;
+            padding:30px;
+        }
+
+        .card{
+            border:none;
+            border-radius:15px;
+            box-shadow:0 5px 15px rgba(0,0,0,.1);
+        }
+
+        .icon{
+            font-size:45px;
+            opacity:.8;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <h3>Car Rental</h3>
+
+    <a href="dashboard.php">
+        <i class="fas fa-chart-line"></i>
+        Dashboard
+    </a>
+
+    <a href="manage-users.php">
+        <i class="fas fa-users"></i>
+        Manage Users
+    </a>
+
+    <a href="manage-cars.php">
+        <i class="fas fa-car"></i>
+        Manage Cars
+    </a>
+
+    <a href="manage-bookings.php">
+        <i class="fas fa-calendar-check"></i>
+        Manage Bookings
+    </a>
+
+    <a href="logout.php">
+        <i class="fas fa-sign-out-alt"></i>
+        Logout
+    </a>
+
+</div>
+
+<div class="content">
+
+    <h2 class="mb-4">Dashboard</h2>
+
     <div class="row">
-        
-        <!-- Sidebar Navigation -->
-        <div class="col-md-3 col-lg-2 bg-dark rounded-4 p-3 mb-4 text-white">
-            <h4 class="text-center py-2 border-bottom border-secondary">Admin Panel</h4>
-            <ul class="nav nav-pills flex-column gap-2 mt-3">
-                <li class="nav-item">
-                    <a href="dashboard.php" class="nav-link active">
-                        <i class="fas fa-chart-line me-2"></i> Dashboard
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="admin-cars.php" class="nav-link text-white">
-                        <i class="fas fa-car me-2"></i> Manage Cars
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="manage-users.php" class="nav-link text-white">
-                        <i class="fas fa-users me-2"></i> Manage Users
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="manage-bookings.php" class="nav-link text-white">
-                        <i class="fas fa-calendar-check me-2"></i> Manage Bookings
-                    </a>
-                </li>
-                <li class="nav-item mt-3">
-                    <a href="logout.php" class="nav-link text-danger">
-                        <i class="fas fa-sign-out-alt me-2"></i> Logout
-                    </a>
-                </li>
-            </ul>
+
+        <div class="col-md-4 mb-4">
+            <div class="card bg-primary text-white">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5>Total Users</h5>
+                        <h2><?= $users ?></h2>
+                    </div>
+
+                    <i class="fas fa-users icon"></i>
+                </div>
+            </div>
         </div>
 
-        <!-- Main Dashboard Content Area -->
-        <div class="col-md-9 col-lg-10 ps-md-4">
-            
-            <div class="mb-4">
-                <h2 class="fw-bold text-dark mb-1">Dashboard Overview</h2>
-                <p class="text-muted small">Welcome back, Admin!</p>
+        <div class="col-md-4 mb-4">
+            <div class="card bg-success text-white">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5>Total Cars</h5>
+                        <h2><?= $cars ?></h2>
+                    </div>
+
+                    <i class="fas fa-car icon"></i>
+                </div>
             </div>
+        </div>
 
-            <!-- Summary Cards / Statistics -->
-            <div class="row g-4 mb-4">
-                
-                <!-- Total Cars Card -->
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm rounded-4 bg-primary text-white p-3">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <h6 class="text-white-50 mb-1">Total Cars</h6>
-                                <h2 class="fw-bold mb-0"><?= $totalCars; ?></h2>
-                            </div>
-                            <div class="fs-1 opacity-50">
-                                <i class="fas fa-car"></i>
-                            </div>
-                        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card bg-danger text-white">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5>Total Bookings</h5>
+                        <h2><?= $bookings ?></h2>
                     </div>
-                </div>
 
-                <!-- Total Users Card -->
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm rounded-4 bg-success text-white p-3">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <h6 class="text-white-50 mb-1">Registered Users</h6>
-                                <h2 class="fw-bold mb-0"><?= $totalUsers; ?></h2>
-                            </div>
-                            <div class="fs-1 opacity-50">
-                                <i class="fas fa-users"></i>
-                            </div>
-                        </div>
-                    </div>
+                    <i class="fas fa-calendar-check icon"></i>
                 </div>
-
-                <!-- Total Bookings Card -->
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm rounded-4 bg-warning text-dark p-3">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <h6 class="text-dark-50 mb-1">Total Bookings</h6>
-                                <h2 class="fw-bold mb-0"><?= $totalBookings; ?></h2>
-                            </div>
-                            <div class="fs-1 opacity-50">
-                                <i class="fas fa-calendar-check"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-
         </div>
 
     </div>
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4>Welcome Admin</h4>
+            <p>Welcome to the Car Rental Management System Dashboard.</p>
+        </div>
+    </div>
+
 </div>
 
+</body>
+</html>
 <?php
 include "includes/footer.php";
 ?>
