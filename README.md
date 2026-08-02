@@ -1,36 +1,35 @@
-# 🚗 RentCars - Car Rental Website
+# 🚗 Car Rental Management System
 
-A responsive and modern Web Application for renting cars, built with **PHP, HTML5, CSS3, and Bootstrap 5**. The project features a full user interface including home, about, car listings, contact page, and a custom glassmorphism login system.
-
----
-
-## 📸 Screenshots
-<img width="1897" height="871" alt="image" src="https://github.com/user-attachments/assets/e8a751ea-ad98-4161-83c0-be03c9a54364" />
-
+A web-based Car Rental System built using **PHP**, **MySQL**, **Bootstrap 5**, and **JavaScript/jQuery**. It features a dynamic user interface for clients to browse and book cars, and a full-featured Admin Panel to manage vehicles, bookings, and users.
 
 ---
-
+## 📸 Screenshots <img width="1897" height="871" alt="image" src="https://github.com/user-attachments/assets/e8a751ea-ad98-4161-83c0-be03c9a54364" />
 ## ✨ Features
 
-- 🏎️ **Hero Section**: Interactive home page with modern UI and background layout.
-- 🔍 **Search & Filtering**: Search bar integrated into the navigation for easy vehicle search.
-- 🔑 **User Authentication**: Glassmorphism-styled Login page for seamless user experience.
-- 📱 **Fully Responsive**: Mobile-friendly design using Bootstrap's Grid System (`col-lg-*`).
-- 📩 **Contact Section**: Complete contact details and inquiry form.
-- 📄 **Structured Pages**: Separate modules/pages (`home.php`, `login.php`, `includes/header.php`, `includes/footer.php`).
+### 👤 User Features
+* **Browse Cars:** Search and view available vehicles with prices and details.
+* **Car Booking:** Select pickup/return dates with automatic total price calculation and overlap validation.
+* **Booking Management:** View booking status (*Pending*, *Approved*, *Cancelled*) and cancel active requests.
+
+### 🛡️ Admin Features
+* **Dashboard Overview:** Real-time statistics showing total cars, users, and bookings.
+* **Manage Cars:** Add, edit, or remove cars from the system.
+* **Manage Bookings:** Approve or cancel user rental requests with instant database status updates.
+* **Authentication & Authorization:** Secure login/logout and role-based access control.
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack & Prerequisites
 
-- **Frontend**: HTML5, CSS3, JavaScript, jQuery, Bootstrap 5
-- **Backend**: PHP
-- **Icons & Fonts**: Bootstrap Icons, FontAwesome, Google Fonts (Poppins)
+* **Language:** PHP (OOP)
+* **Database:** MySQL
+* **Frontend:** HTML5, CSS3, JavaScript, jQuery, Bootstrap 5
+* **Server Environment:** XAMPP / WAMP / MAMP (PHP 8.x recommended)
 
 ---
 
-## 🚀 How to Run Locally
+## 🚀 Installation & Setup
 
-1. **Clone the Repository**
+1. **Clone or Download the Repository:**
    ```bash
-   git clone [https://github.com/your-username/rentcars.git](https://github.com/your-username/rentcars.git)
+   git clone [https://github.com/your-username/NTI-Project.git](https://github.com/your-username/NTI-Project.git)
